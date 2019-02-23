@@ -25,9 +25,13 @@ class Blog(db.Model):
    def __repr__(self):
        return '<Blog %r>' % self.title
 
+
+
 @app.route('/posts', methods=['GET'])
 def get_posts():
    return Blog.query.all()
+
+
 
 
 # order post
@@ -47,6 +51,10 @@ def blog():
 
    posts = get_ordered_posts()
    return render_template('blog.html', posts=posts)
+
+@app.route('/')
+def index():
+    return redirect('/blog')
 
 
 # Add new post
