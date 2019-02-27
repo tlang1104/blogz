@@ -1,26 +1,38 @@
-
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type= "text/css" href ="{{ url_for('static', filename='main.css') }}">
-    <title>Build a Blog{% block title %}{% endblock %}</title>
+    <title>{% block title %}Blogz{% endblock %}</title>
 </head>
 <body>
-    <a href="/blog"><h1>Best Bogs You Will Ever Read!</h1></a>
-    <br>
-
-    <div id = "navigation">
-    <nav>
-        <a href="/blog">Main Page</a>
-        <a href="/newpost">Add a Blog Entry</a>
+    <nav class="nav">
+        <div>
+            <ul class="nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog">Main Blog Page</a></li>
+                <li><a href="/newpost">Add a Blog Entry</a></li>
+            </ul>
+            <ul class="nav">
+                <li><a href="/login">Login</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
     </nav>
-    </div>
-    <br>
+    <div>
+    <h1>{{header}}</h1>
+    
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    <ul>
+    {% for category, message in messages %}
+        <li class="{{category}}">{{message}}</li>
+    {% endfor %}
+    </ul>
+    {% endwith %}
 
     {% block content %}
-
     {% endblock %}
-    
+ 
+    </div>
 </body>
 </html>

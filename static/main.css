@@ -35,7 +35,8 @@ h1 {
     color: lightblue;
  }
  
- nav a {
+.nav a {
+    text-align: center;
     color: lightgreen;
     font-size: 1.7em;
     text-decoration: none;
